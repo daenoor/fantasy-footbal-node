@@ -1,22 +1,23 @@
 
-var mongoose = require('mongoose')
-  , LocalStrategy = require('passport-local').Strategy
-  , User = mongoose.model('User')
+var mongoose = require('mongoose'),
+  LocalStrategy = require('passport-local').Strategy,
+  User = mongoose.model('User');
 
 
+//noinspection JSUnusedLocalSymbols
 module.exports = function (passport, config) {
   // require('./initializer')
 
   // serialize sessions
   passport.serializeUser(function(user, done) {
     done(null, user.id)
-  })
+  });
 
   passport.deserializeUser(function(id, done) {
     User.findOne({ _id: id }, function (err, user) {
       done(err, user)
     })
-  })
+  });
 
   // use local strategy
   passport.use(new LocalStrategy({
@@ -36,4 +37,4 @@ module.exports = function (passport, config) {
       })
     }
   ))
-}
+};

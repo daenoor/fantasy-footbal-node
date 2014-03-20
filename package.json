@@ -41,6 +41,17 @@
         "supertest": "latest",
         "should": "latest",
         "mocha": "latest",
-        "nodemon": "latest"
+        "nodemon": "latest",
+        "browserify": "latest",
+        "browserify-shim": "latest"
+    },
+
+    "browserify": {
+        "transform": [
+            "browserify-shim"
+        ]
+    },
+    "browserify-shim": {
+        "jquery": "global:$"
     }
 }
